@@ -19,12 +19,13 @@ class Post extends Component {
   }
 
   async componentDidMount() {
+  
     const [
       post,
       comments,
     ] = await Promise.all([
-      api.posts.getSingle(this.props.params.id),
-      api.posts.getComments(this.props.params.id),
+      api.posts.getSingle(this.props.match.params.id),
+      api.posts.getComments(this.props.match.params.id),
     ]);
 
     const user = await api.users.getSingle(post.userId);

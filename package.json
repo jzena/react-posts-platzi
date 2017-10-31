@@ -2,19 +2,20 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jzena.github.io/react-posts-platzi/",
   "dependencies": {
-    "eslint": "^4.1.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-intl": "^2.3.0",
-    "react-router": "^4.0.0-alpha.6",
-    "redux": "^3.7.1"
+    "eslint": "4.1.1",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-intl": "2.3.0",
+    "react-router-dom": "4.2.2",
+    "redux": "3.7.1"
   },
   "devDependencies": {
-    "eslint": "^4.1.1",
-    "eslint-config-airbnb": "^15.0.1",
-    "eslint-plugin-react": "^7.1.0",
-    "isomorphic-fetch": "^2.2.1",
+    "eslint": "4.1.1",
+    "eslint-config-airbnb": "15.0.1",
+    "eslint-plugin-react": "7.1.0",
+    "isomorphic-fetch": "2.2.1",
     "react-scripts": "1.0.7"
   },
   "scripts": {

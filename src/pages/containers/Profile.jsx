@@ -21,8 +21,8 @@ class Profile extends Component {
       user,
       posts,
     ] = await Promise.all([
-      api.users.getSingle(this.props.params.id),
-      api.users.getPosts(this.props.params.id)
+      api.users.getSingle(this.props.match.params.id),
+      api.users.getPosts(this.props.match.params.id)
     ]);
 
     this.setState({
