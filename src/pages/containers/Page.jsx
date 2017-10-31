@@ -11,8 +11,6 @@ import Profile from './Profile.jsx';
 import Error404 from './Error404.jsx';
 import Header from '../../shared/components/Header.jsx';
 
-const repo = `/${window.location.pathname.split('/')[1]}`;
-
 function Pages() {
   return (
     <main role="application">

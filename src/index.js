@@ -16,11 +16,11 @@ import Pages from './pages/containers/Page.jsx';
 addLocaleData([...en, ...es]);
 
 const locale = navigator.languages.indexOf('es') >= 0 ? 'es' : 'en';
-
+const repo = `/${window.location.pathname.split('/')[1]}`;
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(
   <IntlProvider locale={locale} messages={messages[locale]}>
-    <BrowserRouter>
+    <BrowserRouter basename={repo}>
       <Pages />
     </BrowserRouter>
   </IntlProvider>,
