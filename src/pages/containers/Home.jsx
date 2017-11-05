@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -7,7 +7,6 @@ import Post from '../../posts/containers/Post.jsx';
 import Loading from '../../shared/components/Loading.jsx';
 import './Page.css';
 
-import api from '../../api.js';
 import actions from '../../actions';
 
 class Home extends Component {
@@ -67,7 +66,9 @@ class Home extends Component {
 
         <section className="list">
           {this.props.posts
-            .map(post => <Post key={post.id} {...post} />)}
+            .map(post => <Post key={post.get('id')} {...post.toJS() } />)
+            .toArray()
+          }
           {this.state.loading && (
             <Loading />
           )}
@@ -77,10 +78,16 @@ class Home extends Component {
   }
 }
 
+Home.propTypes = {
+  actions: PropTypes.objectOf(PropTypes.func),
+  posts: PropTypes.objectOf(PropTypes.object),
+  page: PropTypes.number,
+}
+
 const mapStateToProps = (state, ownProps) => {
   return {
-    posts: state.posts.entities,
-    page: state.posts.page,
+    posts: state.get('posts').get('entities'),
+    page: state.get('posts').get('page'),
   }
 }
 

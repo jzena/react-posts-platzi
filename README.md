@@ -5,6 +5,21 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+- [React](https://reactjs.org/)
+- [Redux](http://redux.js.org/)
+- [awesome-react](https://github.com/enaqx/awesome-react)
+- [awesome-redux](https://github.com/xgrommx/awesome-redux)
+- [Inmutable js](https://facebook.github.io/immutable-js/)
+- [redux dev tolls](https://github.com/zalmoxisus/redux-devtools-extension#usage)
+
 - `npm i -s redux`
 - `npm i -s reat-redux`
 - `npm i -s react-thunk`
+- `npm i -s immutable`
+- `npm i -s redux-immutable`
+- `npm i -s redux-devtools-extension`
+
+### Test
+- [Jest](https://github.com/facebook/jest)
+
+- `npm i -D react-test-renderer`
