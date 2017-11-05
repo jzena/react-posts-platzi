@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Post from '../../posts/containers/Post.jsx';
 import Loading from '../../shared/components/Loading.jsx';
 import './Page.css';
 
 import api from '../../api.js';
+import actions from '../../actions';
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      page: 1,
-      posts: [],
       loading: true,
     };
 
@@ -31,13 +32,8 @@ class Home extends Component {
   }
 
   async initialFetch() {
-    const posts = await api.posts.getList(this.state.page);
-
-    this.setState({
-      posts,
-      page: this.state.page + 1,
-      loading: false,
-    });
+    await this.props.actions.postsNextPage();
+    this.setState({ loading: false, });
   }
 
   handleScroll() {
@@ -53,13 +49,8 @@ class Home extends Component {
 
     return this.setState({ loading: true }, async () => {
       try {
-        const posts = await api.posts.getList(this.state.page);
-
-        this.setState({
-          posts: this.state.posts.concat(posts),
-          page: this.state.page + 1,
-          loading: false,
-        });
+        this.props.actions.postsNextPage();
+        this.setState({ loading: false, });
       } catch (error) {
         console.error(error);
         this.setState({ loading: false });
@@ -71,11 +62,11 @@ class Home extends Component {
     return (
       <section name="Home" className="section">
         <h1>
-          <FormattedMessage id="title.home"/>
+          <FormattedMessage id="title.home" />
         </h1>
 
         <section className="list">
-          {this.state.posts
+          {this.props.posts
             .map(post => <Post key={post.id} {...post} />)}
           {this.state.loading && (
             <Loading />
@@ -86,4 +77,17 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    posts: state.posts.entities,
+    page: state.posts.page,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(actions, dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
