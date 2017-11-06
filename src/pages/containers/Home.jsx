@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Post from '../../posts/containers/Post.jsx';
 import Loading from '../../shared/components/Loading.jsx';
@@ -60,15 +62,33 @@ class Home extends Component {
   render() {
     return (
       <section name="Home" className="section">
+        <Link to={`/gallery`}>
+          Go to galería
+          </Link>
         <h1>
           <FormattedMessage id="title.home" />
         </h1>
 
         <section className="list">
-          {this.props.posts
-            .map(post => <Post key={post.get('id')} {...post.toJS() } />)
-            .toArray()
-          }
+          <ReactCSSTransitionGroup
+            transitionName={{
+              enter: "enter",
+              enterActive: "enterActive",
+              appear: "appear",
+              appearActive: "appearActive",
+              leave: "leaver",
+              leaveActive: "leaverActive"
+            }}
+            transitionAppear
+            transitionAppearTimeout={1000}
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={1000}
+          >
+            {this.props.posts
+              .map(post => <Post key={post.get('id')} {...post.toJS() } />)
+              .toArray()
+            }
+          </ReactCSSTransitionGroup>
           {this.state.loading && (
             <Loading />
           )}

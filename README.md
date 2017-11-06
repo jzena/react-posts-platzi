@@ -11,6 +11,8 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [awesome-redux](https://github.com/xgrommx/awesome-redux)
 - [Inmutable js](https://facebook.github.io/immutable-js/)
 - [redux dev tolls](https://github.com/zalmoxisus/redux-devtools-extension#usage)
+- [react lazy image](https://github.com/sergiodxa/react-lazy-image)
+- [react addons css transition group](https://www.npmjs.com/package/react-addons-css-transition-group)
 
 - `npm i -s redux`
 - `npm i -s reat-redux`
@@ -23,3 +25,5 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [Jest](https://github.com/facebook/jest)
 
 - `npm i -D react-test-renderer`
+- `npm i -S react-lazy-image`
+- `npm i -S react-addons-css-transition-group`

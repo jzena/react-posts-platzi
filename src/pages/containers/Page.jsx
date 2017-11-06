@@ -4,11 +4,12 @@ import {
   Switch
 } from 'react-router-dom';
 
-import Home from './Home.jsx';
-import Post from './Post.jsx';
-import Profile from './Profile.jsx';
-import Error404 from './Error404.jsx';
-import Header from '../../shared/components/Header.jsx';
+import Home from './Home';
+import Post from './Post';
+import Profile from './Profile';
+import Gallery from './Gallery';
+import Error404 from './Error404';
+import Header from '../../shared/components/Header';
 
 function Pages() {
   return (
@@ -18,9 +19,11 @@ function Pages() {
         {/* List de artículos */}
         <Route exact path="/" component={Home} />
         {/* Detalle de artículo */}
-        <Route path="/posts/:id" exact component={Post} />
+        <Route path="/posts/:id" component={Post} />
         {/* Perfil de usuario */}
-        <Route path="/user/:id" exact component={Profile} />
+        <Route path="/user/:id" component={Profile} />
+        {/* Galería de fotos */}
+        <Route path="/gallery" component={Gallery} />
         {/* Error 404 */}
         <Route component={Error404} />
       </Switch>
